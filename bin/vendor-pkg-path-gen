@@ -29,9 +29,9 @@ remove_path () {
 
 mod() {
     case $1 in
-        "+") add    $2 ;; 
-        "-") remove $2 ;;
-        *)   usage     ;;
+        "+") add_path    $2 ;; 
+        "-") remove_path $2 ;;
+        *)   usage          ;;
     esac
 }
 
