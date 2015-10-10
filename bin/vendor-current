@@ -5,6 +5,5 @@ then
     echo $ROS_DISTRO
 else
     echo "No active ROS release found."
-    return -1
 fi
     

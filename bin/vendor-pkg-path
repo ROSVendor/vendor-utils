@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $VENDOR_UTILS_PATH/src/shared.sh
+
 usage () {
     echo "Usage: vendor-pkg-path [+|-] [path..]"
 }
@@ -22,7 +24,7 @@ add_path () {
 }
 
 remove_path () {
-    export ROS_PACKAGE_PATH="${ROS_PACKAGE_PATH/$1}"
+    export ROS_PACKAGE_PATH="${${ROS_PACKAGE_PATH/$1}/::/:}"
 }
 
 mod() {
@@ -42,10 +44,8 @@ then
         1) usage ;;
         *) mod $@ ;;
     esac
-    return $?
 else
     echo $_CURR 
-    return -1
 fi
 
 
