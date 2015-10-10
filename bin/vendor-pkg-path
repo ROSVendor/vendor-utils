@@ -28,10 +28,9 @@ remove_path () {
 }
 
 mod() {
-    shift 
     case $1 in
-        "+") add    $@ ;; 
-        "-") remove $@ ;;
+        "+") add    $2 ;; 
+        "-") remove $2 ;;
         *)   usage     ;;
     esac
 }

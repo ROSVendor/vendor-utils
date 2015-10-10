@@ -7,3 +7,9 @@ Just run
 
 ```shell
 source <(curl https://raw.githubusercontent.com/XDUBESLab/vendor-utils/master/install.sh)
+```
+
+## Quick Start
+
+> TODO write it
+
