@@ -19,3 +19,7 @@ vendor_has_ros() {
     fi
 } 
 
+vendor_to_regex () {
+    cat $(sed -e "s/\//\\\//" <<< $1)
+}
+
