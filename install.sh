@@ -16,3 +16,4 @@ fi
 echo export PATH=\"\$PATH:$LOCAL_PATH/bin\"   >> $USR_RC_PATH
 echo export VENDOR_UTILS_PATH=\"$LOCAL_PATH\" >> $USR_RC_PATH
 echo source "$LOCAL_PATH/autoload.sh"         >> $USR_RC_PATH
+echo "Done."
