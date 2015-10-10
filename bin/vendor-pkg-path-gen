@@ -20,11 +20,11 @@ add_path () {
     else
         return -1
     fi
-    export ROS_PACKAGE_PATH="$ROS_PACKAGE_PATH:$_APATH"
+    echo export ROS_PACKAGE_PATH="$ROS_PACKAGE_PATH:$_APATH"
 }
 
 remove_path () {
-    export ROS_PACKAGE_PATH="${${ROS_PACKAGE_PATH/$1}/::/:}"
+    echo export ROS_PACKAGE_PATH="${${ROS_PACKAGE_PATH/$1}/::/:}"
 }
 
 mod() {
