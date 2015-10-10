@@ -15,7 +15,7 @@ add_path () {
 }
 
 remove_path () {
-    echo export ROS_PACKAGE_PATH="${${ROS_PACKAGE_PATH/$1}/::/:}"
+    echo export ROS_PACKAGE_PATH="$(sed -e "s/$1//" -e "s/::/:/" <<< $ROS_PACKAGE_PATH)"
 }
 
 mod() {
