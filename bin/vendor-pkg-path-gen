@@ -14,7 +14,7 @@ add_path () {
     echo export ROS_PACKAGE_PATH="$ROS_PACKAGE_PATH:$REALPATH"
 }
 
-remove_palth () {
+remove_path () {
     echo export ROS_PACKAGE_PATH="${${ROS_PACKAGE_PATH/$1}/::/:}"
 }
 
