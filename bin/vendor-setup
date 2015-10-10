@@ -1,0 +1,34 @@
+#!/bin/bash
+
+source $VENDOR_UTILS_PATH/src/shared.sh
+
+usage() {
+    echo "echo Usage: vendor-setup release-name"
+    return -1
+}
+
+notfound() {
+    echo "echo ROS release $1 not found"
+    return -1
+}
+
+setup() {
+    file="/opt/ros/$1/setup.$(vendor_shell_type)"
+    echo "echo Trying: $file;"
+    echo "source $file;"
+    if [ $? -ne 0 ]
+    then
+        notfound $1
+    else
+        return 0
+    fi
+}
+
+if [ $# -ne 1 ]
+then
+    usage
+else
+    setup $1
+fi
+
+

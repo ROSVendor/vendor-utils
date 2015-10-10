@@ -1,0 +1,51 @@
+#!/bin/bash
+
+usage () {
+    echo "Usage: vendor-pkg-path [+|-] [path..]"
+}
+
+list () {
+    echo $ROS_PACKAGE_PATH
+}
+
+add_path () {
+    if [ -d $1 ]
+    then
+        _APATH=$1
+    elif [ -d "$PWD/$1" ]
+    then
+        _APATH="$PWD/$1"
+    else
+        return -1
+    fi
+    export ROS_PACKAGE_PATH="$ROS_PACKAGE_PATH:$_APATH"
+}
+
+remove_path () {
+    export ROS_PACKAGE_PATH="${ROS_PACKAGE_PATH/$1}"
+}
+
+mod() {
+    shift 
+    case $1 in
+        "+") add    $@ ;; 
+        "-") remove $@ ;;
+        *)   usage     ;;
+    esac
+}
+
+_CURR=$(vendor-current)
+if [ $? -eq 0 ]
+then
+    case $# in
+        0) list  ;;
+        1) usage ;;
+        *) mod $@ ;;
+    esac
+    return $?
+else
+    echo $_CURR 
+    return -1
+fi
+
+
