@@ -11,27 +11,24 @@ list () {
 }
 
 add_path () {
-    if [ -d $1 ]
-    then
-        _APATH=$1
-    elif [ -d "$PWD/$1" ]
-    then
-        _APATH="$PWD/$1"
-    else
-        return -1
-    fi
-    echo export ROS_PACKAGE_PATH="$ROS_PACKAGE_PATH:$_APATH"
+    echo export ROS_PACKAGE_PATH="$ROS_PACKAGE_PATH:$REALPATH"
 }
 
-remove_path () {
+remove_palth () {
     echo export ROS_PACKAGE_PATH="${${ROS_PACKAGE_PATH/$1}/::/:}"
 }
 
 mod() {
+    if [ -d $2 ]
+    then
+        REALPATH=$(readlink -f $2)
+    else
+        return -1
+    fi
     case $1 in
-        "+") add_path    $2 ;; 
-        "-") remove_path $2 ;;
-        *)   usage          ;;
+        "+") add_path    $REALPATH ;; 
+        "-") remove_path $REALPATH ;;
+        *)   usage                 ;;
     esac
 }
 
