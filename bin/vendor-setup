@@ -8,19 +8,19 @@ usage() {
 }
 
 notfound() {
-    echo "echo ROS release $1 not found"
+    echo "echo ROS release $1 not found:\n  file $2 does not exists."
     return -1
 }
 
 setup() {
-    file="/opt/ros/$1/setup.$(vendor_shell_type)"
-    echo "echo Trying: $file;"
-    echo "source $file;"
-    if [ $? -ne 0 ]
+    ros_setup="/opt/ros/$1/setup.$(vendor_shell_type)"
+    if [ -f $ros_setup ]
     then
-        notfound $1
-    else
+        echo "source $ros_setup"
         return 0
+    else
+        notfound $1 $ros_setup
+        return -1
     fi
 }
 
