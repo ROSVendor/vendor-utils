@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GITHUB_REPO="https://github.com/XDUBESLab/vendor-utils.git"
-LOCAL_PATH="$HOME/.vdedor-utils"
+LOCAL_PATH="$HOME/.vendor-utils"
 SHELL_TYPE=${SHELL##/*/}
 USR_RC_PATH="$HOME/.$SHELL_TYPE"rc
 
